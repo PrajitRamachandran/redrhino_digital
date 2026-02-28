@@ -22,7 +22,7 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow-x: hidden; /* Absolutely prevents horizontal scrolling */
+            overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
@@ -31,36 +31,37 @@
             background: radial-gradient(circle at 50% 30%, var(--red-dark) 10%, var(--bg-dark) 90%);
             color: var(--text-main);
             min-height: 100vh;
-            min-height: 100dvh; /* Dynamic height for mobile browser bars */
+            min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
         }
 
-        /* --- Background Rhino Image --- */
+        /* --- Background Rhino Image (Scaled Down & Anchored) --- */
         .rhino-bg-image {
             position: fixed;
-            bottom: -15vh;
-            left: -20vw;
-            width: 120vw; /* Scales with screen width */
-            min-width: 600px; /* Prevents it getting too small on tiny screens */
-            height: auto;
+            bottom: -30px;
+            left: -30px;
+            width: 65vmin; /* Much smaller base size */
+            min-width: 300px;
+            max-width: 600px;
             opacity: 0.12;
-            transform: rotate(-25deg);
+            transform-origin: bottom left;
+            transform: rotate(-15deg);
             z-index: 0;
             pointer-events: none;
             mix-blend-mode: plus-lighter; 
             transition: transform 0.1s ease-out;
         }
 
-        /* --- Main Content Container --- */
+        /* --- Main Content Container (Tighter Width) --- */
         .container {
             position: relative;
             z-index: 10;
             width: 100%;
-            max-width: 480px;
-            padding: 40px 20px;
+            max-width: 400px; /* Reduced from 480px for a sleeker look */
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -69,35 +70,35 @@
         /* --- Header Section --- */
         .header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             animation: fadeDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
         .logo {
-            width: 85px;
-            height: 85px;
+            width: 70px; /* Scaled down */
+            height: 70px;
             background: #fff;
-            border-radius: 18px;
-            padding: 10px; 
+            border-radius: 14px;
+            padding: 8px; 
             object-fit: contain;
             margin-bottom: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
         }
 
         .title {
-            font-size: 24px;
+            font-size: 20px; /* Scaled down */
             font-weight: 700;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             line-height: 1.2;
         }
 
         .subtitle {
-            font-size: 11px;
+            font-size: 10px; /* Scaled down */
             font-weight: 500;
             color: var(--text-muted);
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             opacity: 0.8;
         }
@@ -107,23 +108,23 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px; /* Tighter gap between buttons */
         }
 
-        /* --- Button Styles --- */
+        /* --- Button Styles (Slimmer & More Premium) --- */
         .link-btn {
             position: relative;
             display: flex;
             align-items: center;
             width: 100%;
-            height: 60px;
-            padding: 0 16px;
+            height: 52px; /* Slimmer buttons */
+            padding: 0 14px;
             background: linear-gradient(90deg, rgba(50, 50, 50, 0.5) 0%, rgba(20, 20, 20, 0.8) 100%);
             border: 1px solid var(--btn-border);
             border-radius: 50px;
             text-decoration: none;
             color: var(--text-main);
-            font-size: 13px;
+            font-size: 11px; /* Scaled down text */
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -143,14 +144,14 @@
         .link-btn:nth-child(4) { animation: slideUp 0.5s forwards 0.25s; }
         .link-btn:nth-child(5) { animation: slideUp 0.5s forwards 0.3s; }
 
-        /* Desktop Hover States Only (Prevents sticky hover on mobile) */
+        /* Desktop Hover States */
         @media (hover: hover) and (pointer: fine) {
             .logo:hover {
                 transform: scale(1.05);
             }
             .link-btn:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(193, 18, 31, 0.25);
+                box-shadow: 0 6px 20px rgba(193, 18, 31, 0.25);
                 border-color: rgba(193, 18, 31, 0.4);
                 background: linear-gradient(90deg, rgba(70, 25, 25, 0.6) 0%, rgba(30, 20, 20, 0.9) 100%);
             }
@@ -166,10 +167,10 @@
             border-color: rgba(193, 18, 31, 0.4);
         }
 
-        /* Button Icon Area */
+        /* Button Icon Area (Scaled Down) */
         .icon-wrapper {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: rgba(255,255,255,0.08);
             border-radius: 50%;
             display: flex;
@@ -180,8 +181,8 @@
         }
 
         .btn-icon {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: var(--text-main);
             transition: transform 0.3s ease;
         }
@@ -189,7 +190,7 @@
         .btn-text {
             flex-grow: 1;
             text-align: center;
-            padding-right: 48px; /* Offsets icon for perfect centering */
+            padding-right: 44px; /* Matches new icon wrapper size for perfect center */
         }
 
         /* Animated Shine Effect Overlay */
@@ -241,23 +242,23 @@
 
         /* --- Smaller Mobile Fallbacks (iPhone SE, older phones) --- */
         @media (max-width: 360px) {
-            .container { padding: 30px 15px; }
-            .title { font-size: 21px; }
-            .subtitle { font-size: 10px; }
-            .link-btn { height: 55px; font-size: 12px; }
-            .icon-wrapper { width: 32px; height: 32px; }
-            .btn-icon { width: 16px; height: 16px; }
-            .btn-text { padding-right: 44px; }
+            .container { padding: 25px 15px; }
+            .title { font-size: 18px; }
+            .subtitle { font-size: 9px; }
+            .link-btn { height: 48px; font-size: 10px; }
+            .icon-wrapper { width: 28px; height: 28px; }
+            .btn-icon { width: 14px; height: 14px; }
+            .btn-text { padding-right: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <img src="image.png" alt="" class="rhino-bg-image" id="parallax-bg">
+    <img src="image_2.png" alt="" class="rhino-bg-image" id="parallax-bg">
 
     <div class="container">
         <header class="header">
-            <img src="logo.jpeg" alt="RedRhino Digital Logo" class="logo">
+            <img src="image_1.png" alt="RedRhino Digital Logo" class="logo">
             <h1 class="title">RedRhino Digital</h1>
             <p class="subtitle">Creative Marketing • Branding • Growth</p>
         </header>
@@ -321,13 +322,13 @@
             });
         });
 
-        // Desktop Parallax - only runs if it's likely a mouse user
+        // Desktop Parallax
         if (window.matchMedia("(pointer: fine)").matches) {
             document.addEventListener('mousemove', (e) => {
                 const bg = document.getElementById('parallax-bg');
                 const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
                 const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-                bg.style.transform = `rotate(-25deg) translate(${mouseX * -15}px, ${mouseY * -15}px)`;
+                bg.style.transform = `rotate(-15deg) translate(${mouseX * -15}px, ${mouseY * -15}px)`;
             });
         }
     </script>
